@@ -79,13 +79,13 @@ extension FlickrApiClient: FlickrApiFeed {
         var parameters:Parameters = self.params
         parameters["tags"] = tags.joined(separator:",")
 		
-        Alamofire.request(urlString, parameters:parameters).validate().responseJSON { response in
-            switch response.result {
-            case .success:
-                if let data = response.result.value {
-                    let res = Mapper<FlickrFeed>().map(JSONObject: data)
-                    onSuccess(res!)
-                }
+		Alamofire.request(urlString, parameters:parameters).validate().responseJSON { response in
+			switch response.result {
+			case .success:
+				if let data = response.result.value {
+					let res = Mapper<FlickrFeed>().map(JSONObject: data)
+					onSuccess(res!)
+				}
             case .failure(let error):
                 onError(error as NSError)
             }

@@ -19,17 +19,25 @@ class ViewController: UIViewController, UISearchBarDelegate {
 		   
 		super.viewDidLoad()
 		
+		// Do any additional setup after loading the view, typically from a nib.
+		
 		setupTableView()
 		setNavItems()
 		
-		// Do any additional setup after loading the view, typically from a nib.
+		loadFlickrFeed(withTags: ["London"])
+	}
+	
+	func loadFlickrFeed(withTags tags:[String]) {
 		
 		let apiClient = FlickrApiClient(language: "en-us")
-		apiClient.fetchFeed(withTags: ["blue"], onSuccess: { flickrFeed in
+		apiClient.fetchFeed(withTags: tags, onSuccess: { flickrFeed in
 			print(flickrFeed)
 			self.flickrItemDataSource.update(withFlickrFeed: flickrFeed)
 		}) { error in
 			print(error.localizedDescription)
+		}
+		if (self.searchController.isActive) {
+			self.searchController.dismiss(animated: true, completion: nil)
 		}
 	}
 	
@@ -54,7 +62,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
 	// called when keyboard search button pressed
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-		
+		let tagsArray = searchBar.text?.components(separatedBy: ",")
+		loadFlickrFeed(withTags: tagsArray!)
 	}
 	
 	// MARK: setup Table View
