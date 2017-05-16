@@ -79,7 +79,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 		self.searchController.searchBar.delegate = self
 		present(searchController, animated: true, completion: nil)
 	}
-    
+	
 	// called when keyboard search button pressed
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		let tagsArray = searchBar.text?.components(separatedBy: ",")
