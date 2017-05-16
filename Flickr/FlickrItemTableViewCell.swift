@@ -13,7 +13,7 @@ final class FlickrItemTableViewCell: UITableViewCell {
 	
 	@IBOutlet fileprivate weak var dateLabel: UILabel!
 	@IBOutlet fileprivate weak var temperatureLabel: UILabel!
-	@IBOutlet fileprivate weak var iconImageView: UIImageView!
+	@IBOutlet fileprivate weak var flickrItemImageView: UIImageView!
 	
 	// MARK: Lifecycle
 	
@@ -22,8 +22,9 @@ final class FlickrItemTableViewCell: UITableViewCell {
 	}
 	
 	func setUpCell(forObject flickItem: FlickrFeedItem) {
-		
-		
+		if (flickItem.image != nil) {
+			self.flickrItemImageView.image = UIImage(data: flickItem.image!)
+		}
 	}
 }
 

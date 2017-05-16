@@ -42,8 +42,13 @@ class FlickrFeedItem : Object, Mappable {
         self.init()
         mapping(map: map)
     }
+	
+	func mapping(map: Map) {
+		title <- map["title"]
+		imageUrl <- map["media.m"]
+	}
     
-    func mapping(map: Map) {
-        title <- map["title"]
-    }
 }
+
+
+

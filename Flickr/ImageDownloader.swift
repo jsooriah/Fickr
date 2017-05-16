@@ -23,14 +23,15 @@ class ImageDownloader: Operation {
             return
         }
         
-        let url = URL(string:self.flickrItem.imageUrl!)
-        let imageData:Data = try! Data(contentsOf:url!)
+		let url = URL(string:self.flickrItem.imageUrl!)
+		
+		let imageData:Data = try! Data(contentsOf:url!)
 		
 		if self.isCancelled {
-            return
-        }
+			return
+		}
 		
-        if (imageData.count) > 0 {
+		if (imageData.count) > 0 {
 			self.flickrItem.image = imageData
 			self.flickrItem.state = .Downloaded
         } else {
@@ -40,3 +41,5 @@ class ImageDownloader: Operation {
         
     }
 }
+
+

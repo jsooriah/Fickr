@@ -17,8 +17,17 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FK6-vn-30z" id="aIy-oB-x02">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="247.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g5m-Lk-HZJ">
+                        <rect key="frame" x="8" y="8" width="359" height="232"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                </subviews>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="26" y="-19"/>
+            <connections>
+                <outlet property="flickrItemImageView" destination="g5m-Lk-HZJ" id="WtE-03-Pue"/>
+            </connections>
+            <point key="canvasLocation" x="25.5" y="-19"/>
         </tableViewCell>
     </objects>
 </document>

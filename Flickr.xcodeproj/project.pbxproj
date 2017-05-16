@@ -17,6 +17,9 @@
 		E84744801EC868600099009A /* FlickrItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E847447F1EC868600099009A /* FlickrItemTableViewCell.xib */; };
 		E84744831EC871FB0099009A /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84744821EC871FB0099009A /* ImageDownloader.swift */; };
 		E84744851EC872060099009A /* PhotoOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84744841EC872060099009A /* PhotoOperations.swift */; };
+		E84744871EC894550099009A /* AppearanceConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84744861EC894550099009A /* AppearanceConfigurator.swift */; };
+		E84744891EC894ED0099009A /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84744881EC894ED0099009A /* ColorPalette.swift */; };
+		E847448B1EC895560099009A /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E847448A1EC895560099009A /* UIColor+RGB.swift */; };
 		E87C89031EC76F4A007BA9A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C89021EC76F4A007BA9A4 /* AppDelegate.swift */; };
 		E87C89051EC76F4A007BA9A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C89041EC76F4A007BA9A4 /* ViewController.swift */; };
 		E87C89081EC76F4A007BA9A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E87C89061EC76F4A007BA9A4 /* Main.storyboard */; };
@@ -62,6 +65,9 @@
 		E847447F1EC868600099009A /* FlickrItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlickrItemTableViewCell.xib; sourceTree = "<group>"; };
 		E84744821EC871FB0099009A /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		E84744841EC872060099009A /* PhotoOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoOperations.swift; sourceTree = "<group>"; };
+		E84744861EC894550099009A /* AppearanceConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceConfigurator.swift; sourceTree = "<group>"; };
+		E84744881EC894ED0099009A /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		E847448A1EC895560099009A /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		E87C88FF1EC76F4A007BA9A4 /* Flickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87C89021EC76F4A007BA9A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E87C89041EC76F4A007BA9A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +241,9 @@
 		E87C89311EC771EF007BA9A4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E84744861EC894550099009A /* AppearanceConfigurator.swift */,
+				E84744881EC894ED0099009A /* ColorPalette.swift */,
+				E847448A1EC895560099009A /* UIColor+RGB.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -532,14 +541,17 @@
 			files = (
 				E87C89381EC77314007BA9A4 /* FlickrApiClient.swift in Sources */,
 				E84744751EC7ACCD0099009A /* FlickrFeed.swift in Sources */,
+				E847448B1EC895560099009A /* UIColor+RGB.swift in Sources */,
 				E84744781EC865150099009A /* FlickrItemDataSource.swift in Sources */,
 				E847447C1EC867690099009A /* NibLoadableAndReusableView.swift in Sources */,
 				E84744851EC872060099009A /* PhotoOperations.swift in Sources */,
+				E84744871EC894550099009A /* AppearanceConfigurator.swift in Sources */,
 				E87C893A1EC78917007BA9A4 /* FlickrFeedItem.swift in Sources */,
 				E847447E1EC867930099009A /* FlickrItemTableViewCell.swift in Sources */,
 				E87C89051EC76F4A007BA9A4 /* ViewController.swift in Sources */,
 				E84744831EC871FB0099009A /* ImageDownloader.swift in Sources */,
 				E87C89031EC76F4A007BA9A4 /* AppDelegate.swift in Sources */,
+				E84744891EC894ED0099009A /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
