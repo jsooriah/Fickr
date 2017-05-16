@@ -16,24 +16,15 @@ enum PhotoRecordState {
 	case New, Downloaded, Failed
 }
 
-/*
- 	title: "1390",
-	link: "https://www.flickr.com/photos/146860704@N06/33793940484/",
-	media: {
-    	m: "https://farm5.staticflickr.com/4160/33793940484_477c5014c9_m.jpg"
-	},
-	date_taken: "2017-05-13T12:44:49-08:00",
-	description: " <p><a href="https://www.flickr.com/people/146860704@N06/">Talat Oncu Mezat Veri Tabanı</a> posted a photo:</p> <p><a href="https://www.flickr.com/photos/146860704@N06/33793940484/" title="1390"><img src="https://farm5.staticflickr.com/4160/33793940484_477c5014c9_m.jpg" width="240" height="180" alt="1390" /></a></p> <p>Dosya adı: h:\mezatpazari\modamubadele\Images\Shop\7\Product\1165\1390.jpg</p>",
-published: "2017-05-13T19:44:49Z",
-	author: "nobody@flickr.com ("Talat Oncu Mezat Veri Taban\u0131")",
-	author_id: "146860704@N06",
-	tags: ""
-*/
-
 class FlickrFeedItem : Object, Mappable {
-    
-    dynamic var title:String? = nil
-    dynamic var imageUrl:String? = nil
+	   
+	dynamic var title:String? = nil
+	dynamic var imageUrl:String? = nil
+    dynamic var link:String? = nil
+    dynamic var itemDescription:String? = nil
+	dynamic var author:String? = nil
+	dynamic var publishedDate:Date? = nil
+    dynamic var takenDate:Date? = nil
     
 	var state = PhotoRecordState.New
 	dynamic var image:Data?
@@ -45,7 +36,12 @@ class FlickrFeedItem : Object, Mappable {
 	
 	func mapping(map: Map) {
 		title <- map["title"]
+        link <- map["link"]
+        itemDescription <- map["description"]
+        author <- map["author"]
 		imageUrl <- map["media.m"]
+        publishedDate <- (map["published"], DateTransform())
+        takenDate <- (map["date_taken"], DateTransform())
 	}
     
 }

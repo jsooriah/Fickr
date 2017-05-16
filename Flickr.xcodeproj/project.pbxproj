@@ -29,6 +29,7 @@
 		E87C89231EC76F4A007BA9A4 /* FlickrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C89221EC76F4A007BA9A4 /* FlickrUITests.swift */; };
 		E87C89381EC77314007BA9A4 /* FlickrApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C89371EC77314007BA9A4 /* FlickrApiClient.swift */; };
 		E87C893A1EC78917007BA9A4 /* FlickrFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C89391EC78917007BA9A4 /* FlickrFeedItem.swift */; };
+		E89222291ECB1AF9006D2646 /* sort_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E89222281ECB1AF9006D2646 /* sort_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		E87C89241EC76F4A007BA9A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E87C89371EC77314007BA9A4 /* FlickrApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickrApiClient.swift; path = emplate/FlickrApiClient.swift; sourceTree = "<group>"; };
 		E87C89391EC78917007BA9A4 /* FlickrFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickrFeedItem.swift; path = emplate/FlickrFeedItem.swift; sourceTree = "<group>"; };
+		E89222281ECB1AF9006D2646 /* sort_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sort_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 		E87C89011EC76F4A007BA9A4 /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
+				E89222281ECB1AF9006D2646 /* sort_icon.png */,
 				E84744761EC865070099009A /* DataSource */,
 				E87C89331EC77206007BA9A4 /* Model */,
 				E87C89321EC771F7007BA9A4 /* UI */,
@@ -390,6 +393,7 @@
 			files = (
 				E87C890D1EC76F4A007BA9A4 /* LaunchScreen.storyboard in Resources */,
 				E84744801EC868600099009A /* FlickrItemTableViewCell.xib in Resources */,
+				E89222291ECB1AF9006D2646 /* sort_icon.png in Resources */,
 				E87C890A1EC76F4A007BA9A4 /* Assets.xcassets in Resources */,
 				E87C89081EC76F4A007BA9A4 /* Main.storyboard in Resources */,
 			);

@@ -8,11 +8,30 @@
 
 import Foundation
 import UIKit
+import RealmSwift
+
+enum SortCriteria {
+    case takenDate
+    case publishedDate
+}
 
 final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
 	
-	fileprivate var flickrFeed: FlickrFeed?
 	fileprivate weak var tableView: UITableView?
+	
+	fileprivate var flickrFeed: FlickrFeed? {
+		didSet {
+			flickrItems = flickrFeed?.items?.sorted(by: { (lhsData, rhsData) -> Bool in
+				return lhsData.publishedDate! < rhsData.publishedDate!
+			})
+		}
+	}
+	
+	var flickrItems:[FlickrFeedItem]? {
+        didSet {
+            self.tableView?.reloadData()
+        }
+	}
 	
 	let pendingOperations = PendingOperations()
 	
@@ -26,8 +45,23 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
         DispatchQueue.main.async {
             self.tableView?.reloadData()
         }
-    }
+	}
     
+	func sortBy(criteria sortCriteria:SortCriteria) {
+		
+		switch (sortCriteria) {
+        	case .publishedDate:
+                flickrItems = flickrFeed?.items?.sorted(by: { (lhsData, rhsData) -> Bool in
+                    return lhsData.publishedDate! < rhsData.publishedDate!
+                })
+        	case .takenDate:
+                flickrItems = flickrFeed?.items?.sorted(by: { (lhsData, rhsData) -> Bool in
+                    return lhsData.takenDate! < rhsData.takenDate!
+                })
+        	//default: break
+		}
+	}
+	
     //MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -43,14 +77,14 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
 	// MARK: UITableViewDataSource
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return (self.flickrFeed?.items != nil) ? (self.flickrFeed?.items?.count)! : 0
+		return (self.flickrItems != nil) ? (self.flickrItems?.count)! : 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: FlickrItemTableViewCell.reuseIdentifier) as? FlickrItemTableViewCell else {
 			fatalError("Unexpected cell type at \(indexPath)")
 		}
-		cell.setUpCell(forObject: (self.flickrFeed?.items![indexPath.row])! as FlickrFeedItem)
+		cell.setUpCell(forObject: (flickrItems![indexPath.row]) as FlickrFeedItem)
 		return cell
 	}
     
@@ -101,7 +135,7 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
             
             for indexPath in toBeStarted {
                 let indexPath = indexPath as NSIndexPath
-                let recordToProcess = self.flickrFeed?.items?[indexPath.row]
+                let recordToProcess = self.flickrItems?[indexPath.row]
                 startOperationsForPhotoRecord(photoDetails: recordToProcess!, indexPath: indexPath)
             }
         }

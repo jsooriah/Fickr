@@ -24,7 +24,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 		setupTableView()
 		setNavItems()
 		
-		loadFlickrFeed(withTags: ["London"])
+		loadFlickrFeed(withTags: ["Paris"])
 	}
 	
 	func loadFlickrFeed(withTags tags:[String]) {
@@ -42,9 +42,29 @@ class ViewController: UIViewController, UISearchBarDelegate {
 	}
 	
 	func setNavItems() {
+        
+        let button: UIButton = UIButton(type:.custom)
+        button.setImage(UIImage(named: "sort_icon"), for: UIControlState.normal)
+        button.addTarget(self, action: #selector(ViewController.sortButtonTapped), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
+        
 		let searchItem : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(searchButtonTapped))
 		self.navigationItem.rightBarButtonItem = searchItem;
 	}
+    
+    func sortButtonTapped() {
+		let actionSheet = UIAlertController(title: "Sort photos by :", message: "", preferredStyle: .actionSheet)
+		actionSheet.addAction(UIAlertAction(title: "1. Published date", style: .default, handler: { _ in
+            self.flickrItemDataSource.sortBy(criteria: .publishedDate)
+		}))
+		actionSheet.addAction(UIAlertAction(title: "2. Taken Date", style: .default, handler: { _ in
+            self.flickrItemDataSource.sortBy(criteria: .takenDate)
+		}))
+		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		self.present(actionSheet, animated: true, completion: nil)
+    }
 	
 	func searchButtonTapped() {
 		
