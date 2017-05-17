@@ -18,12 +18,10 @@ class ViewController: UIViewController, UISearchBarDelegate {
 	override func viewDidLoad() {
 		   
 		super.viewDidLoad()
-		
 		// Do any additional setup after loading the view, typically from a nib.
 		
 		setupTableView()
 		setNavItems()
-		
 		loadFlickrFeed(withTags: ["Paris"])
 	}
 	
@@ -95,6 +93,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 		let nib = UINib(nibName: FlickrItemTableViewCell.nibName, bundle: nil)
 		tableView.register(nib, forCellReuseIdentifier: FlickrItemTableViewCell.reuseIdentifier)
 		flickrItemDataSource = FlickrItemDataSource(tableView: tableView)
+        flickrItemDataSource.viewControllerDelegate = self
 		tableView.dataSource = flickrItemDataSource
 		tableView.delegate = flickrItemDataSource
 	}
@@ -103,7 +102,13 @@ class ViewController: UIViewController, UISearchBarDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            if let flickrItemDetailsVC = segue.destination as? FlickrItemDetailsViewController {
+                flickrItemDetailsVC.flickrItem = sender as! FlickrFeedItem!
+            }
+        }
+	}
 }
 

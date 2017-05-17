@@ -38,11 +38,45 @@
                     <navigationItem key="navigationItem" id="mAw-vN-CYV"/>
                     <connections>
                         <outlet property="tableView" destination="qdc-1L-zSv" id="bxH-bb-SQI"/>
+                        <segue destination="qM1-jw-HgZ" kind="show" identifier="showDetail" id="DU1-29-dRq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1100" y="790.25487256371821"/>
+        </scene>
+        <!--Flickr Item Details View Controller-->
+        <scene sceneID="ZFa-dB-kBk">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="qM1-jw-HgZ" customClass="FlickrItemDetailsViewController" customModule="Flickr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B3a-HG-lt0"/>
+                        <viewControllerLayoutGuide type="bottom" id="jfl-qf-GlD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z4K-IP-mbt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ara-08-kh3">
+                                <rect key="frame" x="16" y="64" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ara-08-kh3" firstAttribute="height" secondItem="z4K-IP-mbt" secondAttribute="height" id="Gha-4A-o8u"/>
+                            <constraint firstItem="Ara-08-kh3" firstAttribute="width" secondItem="z4K-IP-mbt" secondAttribute="width" id="PHh-4r-txR"/>
+                            <constraint firstItem="Ara-08-kh3" firstAttribute="top" secondItem="B3a-HG-lt0" secondAttribute="bottom" id="R4W-qJ-MsO"/>
+                            <constraint firstItem="Ara-08-kh3" firstAttribute="leading" secondItem="z4K-IP-mbt" secondAttribute="leadingMargin" id="SOh-V8-CyT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Ara-08-kh3" id="PAT-6s-GOH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FxW-7U-PpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2383" y="779"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Krd-5u-VMQ">

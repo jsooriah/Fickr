@@ -17,6 +17,7 @@ enum SortCriteria {
 
 final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
 	
+	weak var viewControllerDelegate:UIViewController?
 	fileprivate weak var tableView: UITableView?
 	
 	fileprivate var flickrFeed: FlickrFeed? {
@@ -30,6 +31,7 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
 	var flickrItems:[FlickrFeedItem]? {
         didSet {
             self.tableView?.reloadData()
+            self.tableView?.flashScrollIndicators()
         }
 	}
 	
@@ -43,7 +45,8 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
 	func update(withFlickrFeed flickrFeed: FlickrFeed?) {
         self.flickrFeed = flickrFeed
         DispatchQueue.main.async {
-            self.tableView?.reloadData()
+			self.tableView?.reloadData()
+			self.loadImagesForOnscreenCells()
         }
 	}
     
@@ -86,6 +89,11 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
 		}
 		cell.setUpCell(forObject: (flickrItems![indexPath.row]) as FlickrFeedItem)
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedFlickrItem = flickrItems![indexPath.row]
+		self.viewControllerDelegate?.performSegue(withIdentifier: "showDetail", sender: selectedFlickrItem)
 	}
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
