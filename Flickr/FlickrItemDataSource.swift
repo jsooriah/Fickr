@@ -22,6 +22,7 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
 	
 	fileprivate var flickrFeed: FlickrFeed? {
 		didSet {
+            viewControllerDelegate?.title = flickrFeed?.title
 			flickrItems = flickrFeed?.items?.sorted(by: { (lhsData, rhsData) -> Bool in
 				return lhsData.publishedDate! < rhsData.publishedDate!
 			})
@@ -30,9 +31,12 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
 	
 	var flickrItems:[FlickrFeedItem]? {
         didSet {
+            DispatchQueue.main.async {
+            self.tableView?.setContentOffset(.zero, animated: true)
             self.tableView?.reloadData()
             self.loadImagesForOnscreenCells()
             self.tableView?.flashScrollIndicators()
+            }
         }
 	}
 	

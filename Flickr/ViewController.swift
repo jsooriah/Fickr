@@ -22,7 +22,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 		
 		setupTableView()
 		setNavItems()
-		loadFlickrFeed(withTags: ["Paris"])
+		loadFlickrFeed(withTags: [])
 	}
 	
 	func loadFlickrFeed(withTags tags:[String]) {

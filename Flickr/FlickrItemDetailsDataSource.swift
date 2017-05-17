@@ -101,12 +101,3 @@ final class FlickrItemDetailsDataSource: NSObject, UITableViewDelegate, UITableV
 	}
 }
 
-
-
-
-
-
-
-
-
-
