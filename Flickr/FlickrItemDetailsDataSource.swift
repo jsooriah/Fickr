@@ -15,6 +15,15 @@ final class FlickrItemDetailsDataSource: NSObject, UITableViewDelegate, UITableV
 	fileprivate weak var tableView: UITableView?
 	fileprivate enum flickrItemDetails: Int {
 		case header, title, author, description
+        func rowHeight() -> CGFloat? {
+            switch self {
+            case .header: return 220
+            case .title: return 60
+            case .author: return 60
+            case .description: return 180
+            }
+        }
+        static func count() -> Int { return flickrItemDetails.description.rawValue + 1 }
 	}
 	
 	var flickrItem:FlickrFeedItem?
@@ -62,15 +71,17 @@ final class FlickrItemDetailsDataSource: NSObject, UITableViewDelegate, UITableV
 	// MARK: UITableViewDataSource
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 4
+		return flickrItemDetails.count()
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
+        
 		switch flickrItemDetails(rawValue: (indexPath as NSIndexPath).row)! {
 			case .header:
 			let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as FlickrItemDetailPhotoTableViewCell
-				cell.setUpCell(withImage: UIImage(data: (self.flickrItem?.image)!)!)
+            if let data = self.flickrItem?.image {
+                cell.setUpCell(withImage: UIImage(data: data)!)
+            }
 			return cell
 			case .title:
 			let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as FlickrItemSimpleLabelTableViewCell
@@ -88,16 +99,7 @@ final class FlickrItemDetailsDataSource: NSObject, UITableViewDelegate, UITableV
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch flickrItemDetails(rawValue: (indexPath as NSIndexPath).row)! {
-			case .header:
-				return 220
-        	case .title:
-				return 60
-        	case .author:
-				return 60
-        	case .description:
-				return 180
-		}
+		return flickrItemDetails(rawValue: (indexPath as NSIndexPath).row)!.rowHeight()!
 	}
 }
 

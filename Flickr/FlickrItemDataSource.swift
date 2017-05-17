@@ -31,13 +31,13 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
 	
 	var flickrItems:[FlickrFeedItem]? {
         didSet {
-            DispatchQueue.main.async {
-            self.tableView?.setContentOffset(.zero, animated: true)
-            self.tableView?.reloadData()
-            self.loadImagesForOnscreenCells()
-            self.tableView?.flashScrollIndicators()
-            }
-        }
+			DispatchQueue.main.async {
+				self.tableView?.setContentOffset(.zero, animated: true)
+            	self.tableView?.reloadData()
+            	self.tableView?.flashScrollIndicators()
+                self.loadImagesForOnscreenCells()
+			}
+		}
 	}
 	
 	let pendingOperations = PendingOperations()

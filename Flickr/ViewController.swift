@@ -59,6 +59,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
 	
 	func searchButtonTapped() {
 		
+        self.tableView?.setContentOffset(.zero, animated: true)
+        
 		// Create the search controller and specify that it should present its results in this same view
 		searchController = UISearchController(searchResultsController: nil)
 		

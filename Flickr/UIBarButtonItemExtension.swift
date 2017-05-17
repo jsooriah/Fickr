@@ -19,13 +19,4 @@ extension UIBarButtonItem {
         let barButtonItem = UIBarButtonItem(customView: button)
 		return barButtonItem
 	}
-    
-    class func actionButtonTarget(_ target: Any, action: Selector) -> UIBarButtonItem {
-        let button:UIButton = UIButton(type:.custom)
-        button.setImage(UIImage(named: "sort_icon"), for: UIControlState.normal)
-        button.addTarget(target, action: action, for: .touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        let barButtonItem = UIBarButtonItem(customView: button)
-        return barButtonItem
-    }
 }

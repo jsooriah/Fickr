@@ -13,25 +13,22 @@ import Photos
 class FlickrItemDetailsViewController: UIViewController, UISearchBarDelegate {
 	
 	@IBOutlet fileprivate weak var tableView: UITableView!
-	
 	var flickrItem: FlickrFeedItem!
-	
 	var dataSource:FlickrItemDetailsDataSource?
 	
 	override func viewDidLoad() {
-		      
+		
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		configureTableView()
-        dataSource?.update(withFlickrItem: flickrItem)
-		
+		dataSource?.update(withFlickrItem: flickrItem)
 		setNavItems()
 	}
 	
 	func setNavItems() {
 		
 		title = "\((self.flickrItem?.title)! as String)"
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem.actionButtonTarget(self, action: #selector(self.actionButtonTapped))
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(actionButtonTapped))
 	}
 	
 	func actionButtonTapped() {
