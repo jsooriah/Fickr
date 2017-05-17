@@ -31,6 +31,7 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
 	var flickrItems:[FlickrFeedItem]? {
         didSet {
             self.tableView?.reloadData()
+            self.loadImagesForOnscreenCells()
             self.tableView?.flashScrollIndicators()
         }
 	}

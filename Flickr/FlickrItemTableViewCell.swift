@@ -19,13 +19,12 @@ final class FlickrItemTableViewCell: UITableViewCell {
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
-        self.flickrItemImageView.image = nil
+		self.flickrItemImageView.image = nil
 	}
 	
 	func setUpCell(forObject flickItem: FlickrFeedItem) {
-		if (flickItem.image != nil) {
-			self.flickrItemImageView.image = UIImage(data: flickItem.image!)
-		}
+		guard let data = flickItem.image else { return }
+		self.flickrItemImageView.image = UIImage(data: data)
 	}
 }
 

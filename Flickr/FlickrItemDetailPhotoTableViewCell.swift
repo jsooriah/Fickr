@@ -21,8 +21,6 @@ final class FlickrItemDetailPhotoTableViewCell: UITableViewCell {
 	}
 	
 	func setUpCell(withImage image: UIImage) {
-        if (image != nil) {
-            self.flickrItemImageView.image = image
-        }
+        self.flickrItemImageView.image = image
 	}
 }

@@ -10,6 +10,9 @@
 		1D7026E7F926DB24196EF280 /* Pods_FlickrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A7E478A48A97DF6EFEBBCA /* Pods_FlickrTests.framework */; };
 		4BA18EC2E49D06A30B86F7C8 /* Pods_FlickrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CBB7EE3023781138E937E27 /* Pods_FlickrUITests.framework */; };
 		73D5791C944E2CE3DBF79C41 /* Pods_Flickr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1986234975F4D13E6D424A /* Pods_Flickr.framework */; };
+		E8007C681ECCC2EF006EF941 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8007C671ECCC2EF006EF941 /* UIViewControllerExtension.swift */; };
+		E8007C6A1ECCC32B006EF941 /* MailConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8007C691ECCC32B006EF941 /* MailConfiguration.swift */; };
+		E8007C6C1ECCCF41006EF941 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8007C6B1ECCCF41006EF941 /* UIBarButtonItemExtension.swift */; };
 		E84744751EC7ACCD0099009A /* FlickrFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84744741EC7ACCD0099009A /* FlickrFeed.swift */; };
 		E84744781EC865150099009A /* FlickrItemDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84744771EC865150099009A /* FlickrItemDataSource.swift */; };
 		E847447C1EC867690099009A /* NibLoadableAndReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E847447B1EC867690099009A /* NibLoadableAndReusableView.swift */; };
@@ -65,6 +68,9 @@
 		DA1986234975F4D13E6D424A /* Pods_Flickr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flickr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB25D9C148950DBB9005DFD8 /* Pods-FlickrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrUITests/Pods-FlickrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E0D84B08CCFC1867E75502A5 /* Pods-FlickrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrTests/Pods-FlickrTests.release.xcconfig"; sourceTree = "<group>"; };
+		E8007C671ECCC2EF006EF941 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		E8007C691ECCC32B006EF941 /* MailConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailConfiguration.swift; sourceTree = "<group>"; };
+		E8007C6B1ECCCF41006EF941 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
 		E84744741EC7ACCD0099009A /* FlickrFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrFeed.swift; sourceTree = "<group>"; };
 		E84744771EC865150099009A /* FlickrItemDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrItemDataSource.swift; sourceTree = "<group>"; };
 		E847447B1EC867690099009A /* NibLoadableAndReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadableAndReusableView.swift; sourceTree = "<group>"; };
@@ -261,6 +267,8 @@
 				E84744861EC894550099009A /* AppearanceConfigurator.swift */,
 				E84744881EC894ED0099009A /* ColorPalette.swift */,
 				E847448A1EC895560099009A /* UIColor+RGB.swift */,
+				E8007C671ECCC2EF006EF941 /* UIViewControllerExtension.swift */,
+				E8007C6B1ECCCF41006EF941 /* UIBarButtonItemExtension.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -279,6 +287,7 @@
 			children = (
 				E84744741EC7ACCD0099009A /* FlickrFeed.swift */,
 				E87C89391EC78917007BA9A4 /* FlickrFeedItem.swift */,
+				E8007C691ECCC32B006EF941 /* MailConfiguration.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -587,8 +596,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8007C6C1ECCCF41006EF941 /* UIBarButtonItemExtension.swift in Sources */,
 				E87C89381EC77314007BA9A4 /* FlickrApiClient.swift in Sources */,
 				E84744751EC7ACCD0099009A /* FlickrFeed.swift in Sources */,
+				E8007C681ECCC2EF006EF941 /* UIViewControllerExtension.swift in Sources */,
 				E847448B1EC895560099009A /* UIColor+RGB.swift in Sources */,
 				E84744781EC865150099009A /* FlickrItemDataSource.swift in Sources */,
 				E847447C1EC867690099009A /* NibLoadableAndReusableView.swift in Sources */,
@@ -597,6 +608,7 @@
 				E87C893A1EC78917007BA9A4 /* FlickrFeedItem.swift in Sources */,
 				E847447E1EC867930099009A /* FlickrItemTableViewCell.swift in Sources */,
 				E87C89051EC76F4A007BA9A4 /* ViewController.swift in Sources */,
+				E8007C6A1ECCC32B006EF941 /* MailConfiguration.swift in Sources */,
 				E89FC3AC1ECB5D30005FD0B4 /* FlickrItemSimpleLabelTableViewCell.swift in Sources */,
 				E89FC3B01ECB5D6C005FD0B4 /* FlickrItemDetailPhotoTableViewCell.swift in Sources */,
 				E84744831EC871FB0099009A /* ImageDownloader.swift in Sources */,

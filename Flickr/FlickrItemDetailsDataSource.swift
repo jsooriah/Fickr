@@ -88,9 +88,7 @@ final class FlickrItemDetailsDataSource: NSObject, UITableViewDelegate, UITableV
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		
         switch flickrItemDetails(rawValue: (indexPath as NSIndexPath).row)! {
-			
 			case .header:
 				return 220
         	case .title:
@@ -99,9 +97,7 @@ final class FlickrItemDetailsDataSource: NSObject, UITableViewDelegate, UITableV
 				return 60
         	case .description:
 				return 180
-        	//default:break;
-        }
-		return UITableViewAutomaticDimension
+		}
 	}
 }
 

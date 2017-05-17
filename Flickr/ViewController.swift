@@ -40,14 +40,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 	}
 	
 	func setNavItems() {
-        
-        let button: UIButton = UIButton(type:.custom)
-        button.setImage(UIImage(named: "sort_icon"), for: UIControlState.normal)
-        button.addTarget(self, action: #selector(ViewController.sortButtonTapped), for: .touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
-        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.sortButtonTarget(self, action: #selector(self.sortButtonTapped))
 		let searchItem : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(searchButtonTapped))
 		self.navigationItem.rightBarButtonItem = searchItem;
 	}
