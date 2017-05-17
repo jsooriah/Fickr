@@ -62,7 +62,6 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
                 flickrItems = flickrFeed?.items?.sorted(by: { (lhsData, rhsData) -> Bool in
                     return lhsData.takenDate! < rhsData.takenDate!
                 })
-        	//default: break
 		}
 	}
 	
@@ -97,6 +96,8 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
 		self.viewControllerDelegate?.performSegue(withIdentifier: "showDetail", sender: selectedFlickrItem)
 	}
     
+    // MARK: UIScrollViewDelegate
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         suspendAllOperations()
     }
@@ -113,17 +114,19 @@ final class FlickrItemDataSource: NSObject, UITableViewDelegate, UITableViewData
         loadImagesForOnscreenCells()
         resumeAllOperations()
     }
-    
-    func suspendAllOperations () {
-        pendingOperations.downloadQueue.isSuspended = true
-    }
-    
-    func resumeAllOperations () {
-        pendingOperations.downloadQueue.isSuspended = false
-    }
-    
-    func loadImagesForOnscreenCells () {
-        
+	
+	// MARK: Image Operations
+	
+	func suspendAllOperations () {
+		pendingOperations.downloadQueue.isSuspended = true
+	}
+	
+	func resumeAllOperations () {
+		pendingOperations.downloadQueue.isSuspended = false
+	}
+	
+	func loadImagesForOnscreenCells () {
+		
         if let pathsArray = self.tableView?.indexPathsForVisibleRows {
             
             let allPendingOperations = Set(pendingOperations.downloadsInProgress.keys)
