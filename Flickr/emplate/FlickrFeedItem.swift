@@ -24,8 +24,8 @@ class FlickrFeedItem : Object, Mappable {
     dynamic var itemDescription:String? = nil
 	dynamic var author:String? = nil
 	dynamic var publishedDate:Date? = nil
-    dynamic var takenDate:Date? = nil
-    
+	dynamic var takenDate:Date? = nil
+	
 	var state = PhotoRecordState.New
 	dynamic var image:Data?
 	
@@ -43,7 +43,6 @@ class FlickrFeedItem : Object, Mappable {
         publishedDate <- (map["published"], DateTransform())
         takenDate <- (map["date_taken"], DateTransform())
 	}
-    
 }
 
 

@@ -170,6 +170,22 @@
 			name = Fixtures;
 			sourceTree = "<group>";
 		};
+		E8007C741ECD9BA9006EF941 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				E8007C751ECD9BAF006EF941 /* Images */,
+			);
+			name = Ressources;
+			sourceTree = "<group>";
+		};
+		E8007C751ECD9BAF006EF941 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E89222281ECB1AF9006D2646 /* sort_icon.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		E84744761EC865070099009A /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,12 +249,12 @@
 		E87C89011EC76F4A007BA9A4 /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
-				E89222281ECB1AF9006D2646 /* sort_icon.png */,
 				E84744761EC865070099009A /* DataSource */,
 				E87C89331EC77206007BA9A4 /* Model */,
 				E87C89321EC771F7007BA9A4 /* UI */,
 				E87C89311EC771EF007BA9A4 /* Helpers */,
 				E87C89301EC771E9007BA9A4 /* Network */,
+				E8007C741ECD9BA9006EF941 /* Ressources */,
 				E87C89021EC76F4A007BA9A4 /* AppDelegate.swift */,
 				E87C89061EC76F4A007BA9A4 /* Main.storyboard */,
 				E87C89091EC76F4A007BA9A4 /* Assets.xcassets */,
