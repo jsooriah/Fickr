@@ -42,6 +42,7 @@ class FlickrItemDetailsViewController: UIViewController, UISearchBarDelegate {
         actionSheet.addAction(UIAlertAction(title: "3. Open In Browser", style: .default, handler: { _ in
             self.openPhotoViaUrl()
         }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
     }
 	
@@ -76,7 +77,7 @@ private extension FlickrItemDetailsViewController {
 	}
 	
 	@objc func sendPhoto() {
-		let configuration = MailConfiguration(recipients: ["joel.sooriah@gmail.com"], subject: "Conference feedback via try! Conference app")
+		let configuration = MailConfiguration(recipients: ["joel.sooriah@gmail.com"], subject: "I wanted to share this photo with you, from Flickr.")
 		sendMail(withConfiguration: configuration)
 	}
     

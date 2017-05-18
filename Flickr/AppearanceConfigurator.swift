@@ -13,6 +13,11 @@ class AppearanceConfigurator {
 	
 	class func configureNavigationBar() {
 		
+		let attributes = [
+            NSFontAttributeName : UIFont.systemFont(ofSize: 14),
+            NSForegroundColorAttributeName : ColorPalette.black
+        ]
+        UINavigationBar.appearance().titleTextAttributes = attributes
 	}
 }
 

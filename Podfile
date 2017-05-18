@@ -12,9 +12,9 @@ target 'Flickr' do
 	pod 'SwiftyJSON'
 	pod 'ReachabilitySwift'
 	pod 'APESuperHUD'
-    pod 'Quick'
-    pod 'Nimble'
-    pod 'Mockingjay'
+	pod 'Quick'
+	pod 'Nimble'
+	pod 'Mockingjay'
 	
   target 'FlickrTests' do
     inherit! :search_paths

@@ -24,9 +24,7 @@ final class FlickrItemTableViewCell: UITableViewCell {
 	
 	func setUpCell(forObject flickItem: FlickrFeedItem) {
 		guard let data = flickItem.image else { return }
+		self.selectionStyle = .none
 		self.flickrItemImageView.image = UIImage(data: data)
 	}
 }
-
-
-

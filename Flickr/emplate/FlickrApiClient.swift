@@ -15,6 +15,7 @@ enum FlickrParameterKeys : String {
 	case format = "format"
 	case tags = "tags"
 	case tagmode = "tagmode"
+    case nojsoncallback = "nojsoncallback"
 }
 
 enum FlickrParameterValues {
@@ -50,7 +51,7 @@ class FlickrApiClient {
             FlickrParameterKeys.language.rawValue: FlickrParameterValues.Language.English.rawValue,
 			FlickrParameterKeys.format.rawValue: FlickrParameterValues.ApiResponseFormat.json.rawValue,
 			FlickrParameterKeys.tagmode.rawValue: FlickrParameterValues.TagMode.all.rawValue,
-            "nojsoncallback":"1"
+            FlickrParameterKeys.nojsoncallback.rawValue:"1"
     	]
 	
 	var language: FlickrParameterValues.Language = .English {

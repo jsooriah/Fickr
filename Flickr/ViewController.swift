@@ -83,6 +83,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     fileprivate func setupTableView() {
 		
+        tableView.separatorStyle = .none
 		tableView.layoutMargins = .zero
 		tableView.separatorInset = .zero
 		let nib = UINib(nibName: FlickrItemTableViewCell.nibName, bundle: nil)
