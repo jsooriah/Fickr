@@ -27,7 +27,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 	
 	func loadFlickrFeed(withTags tags:[String]) {
 		
-		let apiClient = FlickrApiClient(language: "en-us")
+		let apiClient = FlickrApiClient(language: "en-us") // use enum here
 		apiClient.fetchFeed(withTags: tags, onSuccess: { flickrFeed in
 			print(flickrFeed)
 			self.flickrItemDataSource.update(withFlickrFeed: flickrFeed)

@@ -33,12 +33,12 @@ enum FlickrParameterValues {
     enum Language : String {
         
         case English = "en-us"
-        case Italian = "it"
-        case Spanish = "es"
-        case German = "de"
-        case Portuguese = "pt"
-        case French = "fr"
-        case Chinese = "zh_hk"
+        case Italian = "it-it"
+        case Spanish = "es-us"
+        case German = "de-de"
+        case Portuguese = "pt-br"
+        case French = "fr-fr"
+        case Chinese = "zh-hk"
     }
 }
 
