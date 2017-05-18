@@ -23,9 +23,11 @@ Tests Spec are speficied in FlickrApiClientTests.swift
 
 # Improvements
 
-- Fetch from database when no connectivity (Offline mode)
+- Fetch from database when no connectivity (Offline mode + Implement reachability check)
 - Improve UI
   - Resize to fit description label
 	- add display tags functionality on each flickr item cell
 	- Save searched tags so as to implement recent searches functionality
 	- Add loader and network activity when network busy
+	- Complete mail configuration to attahc image
+	
