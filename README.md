@@ -30,4 +30,5 @@ Tests Spec are speficied in FlickrApiClientTests.swift
 	- Save searched tags so as to implement recent searches functionality
 	- Add loader and network activity when network busy
 	- Complete mail configuration to attach image
+	- Find appropriate image and put in assets folder for sort icon
 	
