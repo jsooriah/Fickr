@@ -1,4 +1,4 @@
-# wforecast
+# Flickr App
 
 # How to run
 
