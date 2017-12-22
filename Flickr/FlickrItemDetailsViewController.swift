@@ -16,7 +16,7 @@ class FlickrItemDetailsViewController: UIViewController, UISearchBarDelegate {
 	var flickrItem: FlickrFeedItem!
 	var dataSource:FlickrItemDetailsDataSource?
 	
-	// Remark :- May be use programmatic UI View Controllers instead of Storyboards for clearer use of dependencies and avoid optionals !
+	// Todo & Remark :- Use programmatic UI View Controllers instead of Storyboards for clearer use of dependencies and avoid optionals !
 	
 	override func viewDidLoad() {
 		
