@@ -7,22 +7,20 @@
 //
 
 import Foundation
-
-import Foundation
 import UIKit
 
 final class FlickrItemSimpleLabelTableViewCell: UITableViewCell {
 	
-	@IBOutlet fileprivate weak var contentLabel: UILabel!
-	
-	// MARK: Lifecycle
+	@IBOutlet fileprivate weak var contentLabel: UILabel?
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
 	}
 	
 	func setUpCell(forText text: String) {
-		self.contentLabel?.text = text
+        if let contentLabel_ = self.contentLabel as UILabel? {
+			contentLabel_.text = text
+		}
 	}
 }
 

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UISearchBarDelegate {
+class FlickrFeedViewController: UIViewController, UISearchBarDelegate {
 	
-	@IBOutlet fileprivate weak var tableView: UITableView!
+	@IBOutlet fileprivate weak var collectionView: UICollectionView!
 	fileprivate var flickrItemDataSource: FlickrItemDataSource!
     
 	var searchController: UISearchController = UISearchController(searchResultsController: nil)
@@ -18,9 +18,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
 	override func viewDidLoad() {
 		   
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
 		
-		setupTableView()
+		setupCollectionView()
 		setNavItems()
 		loadFlickrFeed(withTags: [])
 	}
@@ -40,26 +39,29 @@ class ViewController: UIViewController, UISearchBarDelegate {
 	}
 	
 	func setNavItems() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.sortButtonTarget(self, action: #selector(self.sortButtonTapped))
+		let sortItem : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.organize, target: self, action: #selector(self.sortButtonTapped))
+        self.navigationItem.leftBarButtonItem = sortItem
 		let searchItem : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(searchButtonTapped))
 		self.navigationItem.rightBarButtonItem = searchItem;
 	}
+	
+    // MARK: Sort Actions
     
     func sortButtonTapped() {
-		let actionSheet = UIAlertController(title: "Sort photos by :", message: "", preferredStyle: .actionSheet)
-		actionSheet.addAction(UIAlertAction(title: "1. Published date", style: .default, handler: { _ in
+		let actionSheet = UIAlertController(title: Config.FeedSort.ActionLabelStrings.SORT_ACTIONSHEET_TITLE, message: "", preferredStyle: .actionSheet)
+		actionSheet.addAction(UIAlertAction(title: Config.FeedSort.ActionLabelStrings.SORT_ACTIONSHEET_PUBLISHED_DATE_ACTION, style: .default, handler: { _ in
             self.flickrItemDataSource.sortBy(criteria: .publishedDate)
 		}))
-		actionSheet.addAction(UIAlertAction(title: "2. Taken Date", style: .default, handler: { _ in
+		actionSheet.addAction(UIAlertAction(title: Config.FeedSort.ActionLabelStrings.SORT_ACTIONSHEET_TAKEN_DATE_ACTION, style: .default, handler: { _ in
             self.flickrItemDataSource.sortBy(criteria: .takenDate)
 		}))
-		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		actionSheet.addAction(UIAlertAction(title: Config.FeedSort.ActionLabelStrings.SORT_ACTIONSHEET_CANCEL_ACTION, style: .cancel, handler: nil))
 		self.present(actionSheet, animated: true, completion: nil)
     }
 	
 	func searchButtonTapped() {
 		
-        self.tableView?.setContentOffset(.zero, animated: true)
+        self.collectionView?.setContentOffset(.zero, animated: true)
         
 		// Create the search controller and specify that it should present its results in this same view
 		searchController = UISearchController(searchResultsController: nil)
@@ -79,19 +81,20 @@ class ViewController: UIViewController, UISearchBarDelegate {
 		loadFlickrFeed(withTags: tagsArray!)
 	}
 	
-	// MARK: setup Table View
+	// MARK: setup Collection View
     
-    fileprivate func setupTableView() {
-		
-        tableView.separatorStyle = .none
-		tableView.layoutMargins = .zero
-		tableView.separatorInset = .zero
+	fileprivate func setupCollectionView() {
+        
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+        
+		collectionView.layoutMargins = .zero
 		let nib = UINib(nibName: FlickrItemTableViewCell.nibName, bundle: nil)
-		tableView.register(nib, forCellReuseIdentifier: FlickrItemTableViewCell.reuseIdentifier)
-		flickrItemDataSource = FlickrItemDataSource(tableView: tableView)
-        flickrItemDataSource.viewControllerDelegate = self
-		tableView.dataSource = flickrItemDataSource
-		tableView.delegate = flickrItemDataSource
+		collectionView.register(nib, forCellWithReuseIdentifier: FlickrItemTableViewCell.reuseIdentifier)
+        flickrItemDataSource = FlickrItemDataSource(collectionView: collectionView)
+		flickrItemDataSource.viewControllerDelegate = self
+		collectionView.dataSource = flickrItemDataSource
+		collectionView.delegate = flickrItemDataSource
 	}
 	
     override func didReceiveMemoryWarning() {

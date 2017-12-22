@@ -22,9 +22,10 @@ import Realm
 /**
  An iterator for a `RealmCollection` instance.
  */
+
 public final class RLMIterator<T: Object>: IteratorProtocol {
     private var i: UInt = 0
-    private let generatorBase: NSFastEnumerationIterator
+    private var generatorBase: NSFastEnumerationIterator
 
     init(collection: RLMCollection) {
         generatorBase = NSFastEnumerationIterator(collection)

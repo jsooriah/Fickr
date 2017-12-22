@@ -16,33 +16,36 @@ class FlickrItemDetailsViewController: UIViewController, UISearchBarDelegate {
 	var flickrItem: FlickrFeedItem!
 	var dataSource:FlickrItemDetailsDataSource?
 	
+	// Remark :- May be use programmatic UI View Controllers instead of Storyboards for clearer use of dependencies and avoid optionals !
+	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
+		
 		// Do any additional setup after loading the view, typically from a nib.
 		configureTableView()
-		dataSource?.update(withFlickrItem: flickrItem)
 		setNavItems()
 	}
 	
 	func setNavItems() {
-		
-		title = "\((self.flickrItem?.title)! as String)"
+		guard let flickrItem_ = self.flickrItem else { return }
+		title = "\((flickrItem_.title)! as String)"
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(actionButtonTapped))
 	}
 	
 	func actionButtonTapped() {
-        let actionSheet = UIAlertController(title: "Actions :", message: "", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "1. Save Photo", style: .default, handler: { _ in
+		
+		let actionSheet = UIAlertController(title: Config.Share.ActionLabelStrings.SHARE_ACTIONSHEET_TITLE, message: "", preferredStyle: .actionSheet)
+		actionSheet.addAction(UIAlertAction(title: Config.Share.ActionLabelStrings.SHARE_ACTIONSHEET_SAVE_ACTION, style: .default, handler: { _ in
             self.savePhoto()
         }))
-        actionSheet.addAction(UIAlertAction(title: "2. Send Photo", style: .default, handler: { _ in
+		actionSheet.addAction(UIAlertAction(title: Config.Share.ActionLabelStrings.SHARE_ACTIONSHEET_SEND_ACTION, style: .default, handler: { _ in
             self.sendPhoto()
         }))
-        actionSheet.addAction(UIAlertAction(title: "3. Open In Browser", style: .default, handler: { _ in
+		actionSheet.addAction(UIAlertAction(title: Config.Share.ActionLabelStrings.SHARE_ACTIONSHEET_OPEN_BROWSER_ACTION, style: .default, handler: { _ in
             self.openPhotoViaUrl()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		actionSheet.addAction(UIAlertAction(title: Config.Share.ActionLabelStrings.SHARE_ACTIONSHEET_CANCEL_ACTION, style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
     }
 	
@@ -63,6 +66,7 @@ private extension FlickrItemDetailsViewController {
 		tableView.separatorStyle = .none
 		
 		dataSource = FlickrItemDetailsDataSource(tableView: tableView)
+        dataSource?.update(withFlickrItem: flickrItem)
 		tableView.delegate = dataSource
 		tableView.dataSource = dataSource
 	}

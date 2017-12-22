@@ -13,8 +13,6 @@ final class FlickrItemDetailPhotoTableViewCell: UITableViewCell {
 	
 	@IBOutlet fileprivate weak var flickrItemImageView: UIImageView!
 	
-	// MARK: Lifecycle
-	
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		self.flickrItemImageView.image = nil

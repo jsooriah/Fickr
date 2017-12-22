@@ -44,7 +44,7 @@ enum FlickrParameterValues {
 
 class FlickrApiClient {
 	
-	let baseURLString = "https://api.flickr.com/services/feeds/photos_public.gne"
+	let baseURLString = Config.Api.FLICKR_API_HOST + Config.Api.PUBLIC_PHOTOS_PATH
 	
 	var params:Parameters =
 		[
@@ -93,14 +93,4 @@ extension FlickrApiClient: FlickrApiFeed {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
 

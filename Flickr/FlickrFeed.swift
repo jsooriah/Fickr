@@ -13,7 +13,6 @@ import RealmSwift
 class FlickrFeed : Object, Mappable {
 	
 	dynamic var title:String? = nil
-	
 	var items:List<FlickrFeedItem>? = nil
 	
 	required convenience init?(map: Map) {

@@ -34,9 +34,12 @@ final class FlickrItemDetailsDataSource: NSObject, UITableViewDelegate, UITableV
 	}
 	
 	func update(withFlickrItem flickrFeedItem: FlickrFeedItem?) {
-		self.flickrItem = flickrFeedItem
-		DispatchQueue.main.async {
-			self.tableView?.reloadData()
+		
+		if let flickrFeedItem_ = flickrFeedItem {
+        	self.flickrItem = flickrFeedItem_
+			DispatchQueue.main.async {
+				self.tableView?.reloadData()
+			}
 		}
 	}
 	
@@ -75,26 +78,26 @@ final class FlickrItemDetailsDataSource: NSObject, UITableViewDelegate, UITableV
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        guard let flickrItem_ = self.flickrItem else { return UITableViewCell() }
 		switch flickrItemDetails(rawValue: (indexPath as NSIndexPath).row)! {
 			case .header:
-			let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as FlickrItemDetailPhotoTableViewCell
-            if let data = self.flickrItem?.image {
-                cell.setUpCell(withImage: UIImage(data: data)!)
-            }
-			return cell
+				let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as FlickrItemDetailPhotoTableViewCell
+            	if let data = flickrItem_.image {
+                	cell.setUpCell(withImage: UIImage(data: data)!)
+            	}
+				return cell
 			case .title:
-			let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as FlickrItemSimpleLabelTableViewCell
-            	cell.setUpCell(forText: "Title: \((self.flickrItem?.title)! as String)")
-			return cell
+				let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as FlickrItemSimpleLabelTableViewCell
+            	cell.setUpCell(forText: "Title: \((flickrItem_.title)! as String)")
+				return cell
         	case .author:
-			let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as FlickrItemSimpleLabelTableViewCell
-				cell.setUpCell(forText: "Author: \((self.flickrItem?.author)! as String)")
-			return cell
+				let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as FlickrItemSimpleLabelTableViewCell
+				cell.setUpCell(forText: "Author: \((flickrItem_.author)! as String)")
+				return cell
         	case .description:
-			let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as FlickrItemSimpleLabelTableViewCell
-            	cell.setUpCell(forText: "Description: \((self.flickrItem?.itemDescription)! as String)")
-			return cell
+				let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as FlickrItemSimpleLabelTableViewCell
+            	cell.setUpCell(forText: "Description: \((flickrItem_.itemDescription)! as String)")
+				return cell
 		}
 	}
 	

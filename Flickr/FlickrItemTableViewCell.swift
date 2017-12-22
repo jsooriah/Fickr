@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-final class FlickrItemTableViewCell: UITableViewCell {
+final class FlickrItemTableViewCell: UICollectionViewCell {
 	
 	@IBOutlet fileprivate weak var dateLabel: UILabel!
 	@IBOutlet fileprivate weak var temperatureLabel: UILabel!
@@ -24,7 +24,7 @@ final class FlickrItemTableViewCell: UITableViewCell {
 	
 	func setUpCell(forObject flickItem: FlickrFeedItem) {
 		guard let data = flickItem.image else { return }
-		self.selectionStyle = .none
+        self.flickrItemImageView.contentMode = .scaleAspectFit
 		self.flickrItemImageView.image = UIImage(data: data)
 	}
 }
