@@ -22,7 +22,7 @@ Run `CMD+U` in order to run tests
 Tests Spec are speficied in FlickrApiClientTests.swift
 
 # Improvements
-- Implement UIViewControllers programmatically (rather than via storyboards) for better handling of dependencies and optionals as well
+- Implement UIViewControllers programmatically (rather than via storyboards) for better handling of dependencies and optionals, and also for better testability and code readability
 - Fetch from database when no connectivity (Offline mode + Implement reachability check)
 - Improve UI
   - Resize to fit description label
